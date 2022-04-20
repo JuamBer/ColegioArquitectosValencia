@@ -1,0 +1,29 @@
+<div class="modal">
+  <form [formGroup]="form" (ngSubmit)="send(form.value)">
+  <h1>Editar Evento</h1>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Nombre</mat-label>
+    <input matInput required formControlName="nombre">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Fecha</mat-label>
+    <input matInput required formControlName="fecha" type="date">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Descripcion</mat-label>
+    <input matInput required formControlName="descripcion">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Web</mat-label>
+    <input matInput required formControlName="web">
+  </mat-form-field>
+
+  <div class="boton">
+    <button mat-raised-button color="primary" type="submit">Actualizar</button>
+  </div>
+</form>
+</div>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Recuperar Contraseña</title>
+</head>
+<body>
+    <h2>Recuperar Contraseña</h2>
+    <h3><span>Hola </span> <span th:text="${userName}"> </span></h3>
+    <h4>Haz click en el siguiente enlace para crear una nueva contraseña</h4>
+    <h5>Token: <span th:text="${token}"> </span></h5>
+    <a th:href="@{${url}}"><button>Ir a mi cuenta</button></a>
+</body>
+</html>

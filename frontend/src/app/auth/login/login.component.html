@@ -1,0 +1,33 @@
+<div class="login">
+  <form [formGroup]="form">
+
+    <div class="title">
+      <h1>Login</h1>
+    </div>
+
+    <div *ngIf="error" class="error">
+      {{ error }}
+    </div>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput placeholder="pepe" formControlName="nombre" required>
+      <mat-error *ngIf="this.form.get('email')?.invalid">Nombre Invalido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Contraseña</mat-label>
+      <input type="password" matInput placeholder="pepe@email.com" formControlName="password" required>
+      <mat-error *ngIf="this.form.get('email')?.invalid">Contraseña Invalida</mat-error>
+    </mat-form-field>
+
+    <div class="boton">
+      <button [disabled]="form.invalid" mat-raised-button color="primary" (click)="login(form.value)">Login</button>
+    </div>
+
+    <div class="info">
+      <h4>Si no tienes cuenta registrate <a href="/register">aquí</a></h4>
+      <h4>Si no recuerdas tu contraseña recuperala <a href="/send-email">aquí</a></h4>
+    </div>
+  </form>
+</div>

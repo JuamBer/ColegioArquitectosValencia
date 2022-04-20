@@ -1,0 +1,38 @@
+.sidebar {
+  padding: 10%;
+
+  .profile {
+    button {
+      margin-top: 5%;
+    }
+  }
+
+  .nav {
+    padding-top: 20%;
+    nav {
+      ul {
+        li {
+          list-style: none;
+          padding: 2.5%;
+          text-decoration: none;
+          color: black;
+          margin-bottom: 2%;
+          border-bottom: 2px solid white;
+        }
+        li:hover {
+          cursor: pointer;
+        }
+        li.active {
+          border-bottom: 2px solid black;
+        }
+      }
+    }
+  }
+
+  .permisos {
+    margin-top: 20%;
+    li {
+      margin-left: 10%;
+    }
+  }
+}

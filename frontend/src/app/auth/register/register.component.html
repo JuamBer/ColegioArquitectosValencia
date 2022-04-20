@@ -1,0 +1,39 @@
+<div class="register">
+  <form [formGroup]="form">
+
+    <div class="title">
+      <h1>Registro</h1>
+    </div>
+
+    <div *ngIf="error" class="error">
+      {{ error }}
+    </div>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput placeholder="pepe" formControlName="nombre" required>
+      <mat-error *ngIf="this.form.get('email')?.invalid">Nombre Invalido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="pepe@email.com" formControlName="email" required>
+      <mat-error *ngIf="this.form.get('email')?.invalid">Email Invalido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Contraseña</mat-label>
+      <input type="password" matInput formControlName="password" required>
+      <mat-error *ngIf="this.form.get('email')?.invalid">Contraseña Invalida</mat-error>
+    </mat-form-field>
+
+    <div class="boton">
+      <button [disabled]="form.invalid" mat-raised-button color="primary"
+        (click)="register(form.value)">Register</button>
+    </div>
+
+    <div class="info">
+      <h4>Si ya tienes cuenta logeate <a href="/login">aquí</a></h4>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,45 @@
+<div class="modal">
+  <form [formGroup]="form" (ngSubmit)="send(form.value)">
+  <h1>Editar Usuario</h1>
+
+  <h3>Información</h3>
+  <mat-form-field appearance="fill">
+    <mat-label>Nombre</mat-label>
+    <input matInput required formControlName="nombre">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput required formControlName="email">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Rol</mat-label>
+    <mat-select [compareWith]="compareFunction" formControlName="rol" (selectionChange)="onRolChange($event)">
+      <mat-option
+        *ngFor="let rol of roles" [value]="rol">{{rol.nombre}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <h3>Permisos</h3>
+  <section class="example-section">
+    <span class="example-list-section">
+      <ul formArrayName="permisos">
+        <li *ngFor="let permiso of permisos; let i = index">
+          <mat-checkbox #c (change)="onPermisosChange(permiso)"
+            [disabled]="(this.form.get('rol')?.value | checkRolPermisoDisable: permiso)"
+            [checked]="((permiso | checkPermiso: data.usuario.id) | async) || c.disabled">
+            {{permiso.nombre}}
+          </mat-checkbox>
+        </li>
+      </ul>
+    </span>
+  </section>
+
+  <div class="boton">
+    <button mat-raised-button color="primary" type="submit">Actualizar</button>
+  </div>
+</form>
+</div>

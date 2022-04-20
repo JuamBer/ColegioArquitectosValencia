@@ -1,0 +1,22 @@
+<div class="sidebar">
+  <div class="profile">
+    <h3>Hola {{usuario.nombre}}</h3>
+    <button mat-raised-button color="primary" (click)="logOut()">Log Out</button>
+  </div>
+
+  <div class="nav">
+    <nav>
+      <ul>
+        <li *ngIf="tienePermiso('LISTAR_USUARIOS')" [class.active]="page == 'dashboard/usuarios'"
+          (click)="goTo('dashboard/usuarios')">Usuarios</li>
+        <li [class.active]="page == 'dashboard/eventos'" (click)="goTo('dashboard/eventos')">Eventos</li>
+      </ul>
+    </nav>
+  </div>
+  <div class="permisos">
+    <h4>Mis Permisos (Para Debugear)</h4>
+    <ul>
+      <li *ngFor="let authority of usuario.authorities">{{authority.authority}}</li>
+    </ul>
+  </div>
+</div>

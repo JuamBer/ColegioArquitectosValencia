@@ -1,0 +1,71 @@
+<h2>Eventos</h2>
+
+
+<div class="main">
+
+
+
+  <div class="formulario" *ngIf="tienePermiso('CREAR_EVENTO')">
+    <form [formGroup]="form" (ngSubmit)="insertEvent(form.value)">
+      <div class="inputs">
+          <input matInput formControlName="nombre" placeholder="Nombre" id="nombre" required>
+        <br>
+          <input matInput formControlName="fecha" type="date" id="fecha" required>
+        <br>
+          <input matInput formControlName="descripcion" type="text" placeholder="descripcion" id="descripcion"
+            required>
+        <br>
+          <input matInput formControlName="web" type="text" placeholder="web" id="web" required>
+
+      </div>
+      <div class="button">
+        <button mat-raised-button type="submit" color="primary">Crear Evento</button>
+      </div>
+    </form>
+  </div>
+
+  <ul class="lista">
+
+    <div>
+      <ul class="eventos">
+        <li class="header">
+          <div (click)="orderBy('id')">
+            <h4>ID</h4>
+          </div>
+          <div (click)="orderBy('nombre')">
+            <h4>Nombre</h4>
+          </div>
+          <div (click)="orderBy('fecha')">
+            <h4>Fecha</h4>
+          </div>
+          <div (click)="orderBy('descripcion')">
+            <h4>Descripcion</h4>
+          </div>
+          <div (click)="orderBy('web')">
+            <h4>Web</h4>
+          </div>
+          <div *ngIf="tienePermiso('EDITAR_EVENTO')">
+            <h4>Editar</h4>
+          </div>
+          <div *ngIf="tienePermiso('ELIMINAR_EVENTO')">
+            <h4>Eliminar</h4>
+          </div>
+        </li>
+        <li class="fila" *ngFor="let evento of eventos">
+          <div>{{ evento.id }}</div>
+          <div>{{ evento.nombre }}</div>
+          <div>{{ evento.fecha }}</div>
+          <div>{{ evento.descripcion }}</div>
+          <div>{{ evento.web }}</div>
+          <div>
+          <button *ngIf="tienePermiso('EDITAR_EVENTO')" mat-raised-button color="accent"
+            (click)="updateEvent(evento)">Editar</button></div>
+          <div><button *ngIf="tienePermiso('ELIMINAR_EVENTO')" mat-raised-button color="warn"
+            (click)="deleteEvent(evento.id)">Eliminar</button></div>
+        </li>
+      </ul>
+    </div>
+
+
+  </ul>
+</div>

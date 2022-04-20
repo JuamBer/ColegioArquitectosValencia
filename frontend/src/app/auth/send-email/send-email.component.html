@@ -1,0 +1,32 @@
+<div class="send-email">
+  <form [formGroup]="form" (ngSubmit)="sendEmail()">
+
+    <div class="title">
+      <h1>Enviar Email Para Reestrablecer La Contraseña</h1>
+    </div>
+
+    <div *ngIf="success" class="success">
+      {{ success }}
+    </div>
+
+    <div *ngIf="error" class="error">
+      {{ error }}
+    </div>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="juan@email.com" formControlName="email" required>
+        <mat-error *ngIf="this.form.get('email')?.invalid">Email Invalido</mat-error>
+      </mat-form-field>
+
+      <div class="boton">
+        <button [disabled]="form.invalid" mat-raised-button color="primary" type="submit">Enviar
+          Email</button>
+      </div>
+
+
+    <div class="info">
+      <h4>Si ya recuerdas tu contraseña logeate <a href="/login">aquí</a></h4>
+    </div>
+  </form>
+</div>

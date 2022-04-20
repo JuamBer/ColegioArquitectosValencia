@@ -1,0 +1,13 @@
+.myapp {
+  display: flex;
+  justify-content: space-between;
+
+  .sidebar {
+    width: 20%;
+  }
+
+  .main {
+    width: 80%;
+  }
+
+}
